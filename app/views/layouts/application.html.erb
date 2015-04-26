@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Shopify Embedded Example App</title>
+
+  <script src="//cdn.shopify.com/s/assets/external/app.js?<%= Time.now.strftime('%Y%m%d%H') %>"></script>
+  <script type="text/javascript">
+    ShopifyApp.init({
+      apiKey: "<%= ShopifyApp.configuration.api_key %>",  // Expects: 32 character API key string like ff9b1d04414785029e066f8fd0465d00
+      shopOrigin: "<%= "https://#{ @shop_session.url }" if @shop_session %>",  // Expects: https://exampleshop.myshopify.com
+      debug: true
+    });
+  </script>
+
+  <%= stylesheet_link_tag 'application' %>
+  <link rel="stylesheet" type="text/css" href="seaff.css">
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <%= yield %>
+</body>
+</html>
