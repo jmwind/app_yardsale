@@ -1,8 +1,9 @@
 class HomeController < ApplicationController
-  
+
   around_filter :shopify_session
-  
+
   def index
+    @products = ShopifyAPI::Product.all
   end
 
   def modal

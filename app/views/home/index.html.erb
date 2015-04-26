@@ -8,9 +8,13 @@
             <div class="section-content">
               <h1>Waiting Lists by Product</h1>
               <p>People can wait for things. And get them</p>
-              <h3>Lists</h3>
-              <ol>
-                <li>one</li>
+              <h3>Products</h3>
+                <ol>
+                <% @products.each do |product| %>
+                <li>
+                  <%= product.title %>, <%= product.vendor %>
+                </li>
+                <% end %>
               </ol>
           </div>
         </div>
