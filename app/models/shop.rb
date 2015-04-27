@@ -70,6 +70,7 @@ class Shop < ActiveRecord::Base
   def cancel
     self.api_token = nil
     self.oauth_token = nil
+    self.status = 'cancelled'
     save!
   end
 

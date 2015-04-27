@@ -57,5 +57,12 @@ module EmbededApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.after_initialize do
+      app_url            = ENV["AYS_APP_URL"]
+      Settings.host      = app_url
+      Settings.webhook_url = ENV["AYS_WEBHOOK_URL"] || app_url
+      config.logger.debug "Using app_url: #{app_url}"
+    end
   end
 end

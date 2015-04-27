@@ -7,7 +7,7 @@ class Webhooks::Base
       webhook = ShopifyAPI::Webhook.create(
           :topic   => topic,
           :format  => 'json',
-          :address => "http://localhost:3000/webhooks/#{topic}")
+          :address => "#{Settings.webhook_url}/webhooks/#{topic}")
 
       raise ActiveResource::ResourceInvalid, "#{webhook.errors.full_messages.inspect}" if webhook.new?
       webhook
@@ -19,7 +19,7 @@ class Webhooks::Base
   end
 
   def self.hook
-    ShopifyAPI::Webhook.find(:first, :params => {:topic => topic, :address => "http://localhost:3000/webhooks/#{topic}"})
+    ShopifyAPI::Webhook.find(:first, :params => {:topic => topic, :address => "#{Settings.webhook_url}/webhooks/#{topic}"})
   rescue
   end
 
