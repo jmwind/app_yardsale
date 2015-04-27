@@ -1,5 +1,6 @@
 class Shop < ActiveRecord::Base
   include WebhookManagement
+  include ScriptTagManagement
   include ApiAccess
 
   attr_accessor :first_install
@@ -53,7 +54,7 @@ class Shop < ActiveRecord::Base
       end
 
       #shop.install_webhooks
-      #shop.install_script_tags(shop.api_version)
+      shop.install_script_tags
     else
       shop.first_install = false
     end
