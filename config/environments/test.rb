@@ -40,4 +40,6 @@ EmbededApp::Application.configure do
   # Active Record eager loading
   config.eager_load = true
 
+  config.logger = Logger.new(STDOUT)
+
 end

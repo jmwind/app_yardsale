@@ -8,16 +8,27 @@ class SessionsController < ApplicationController
   def show
     if response = request.env['omniauth.auth']
       sess = ShopifyAPI::Session.new(params[:shop], response['credentials']['token'])
-      session[:shopify] = ShopifySessionRepository.store(sess)
+      find_or_create_from_session(sess)
+      session[:shopify] = sess
       flash[:notice] = "Logged in"
+      logger.debug "show: Logged in redirecting to #{return_address}"
       redirect_to return_address
     else
       flash[:error] = "Could not log in to Shopify store."
+      logger.debug "show: Failed loging"
       redirect_to :action => 'new'
     end
   end
 
   protected
+
+  def find_or_create_from_session(session)
+    ShopifyAPI::Base.activate_session(session)
+    Shop.transaction do
+      @shop = Shop.find_or_create_from_api(session)
+      @shop.logged_in!
+    end
+  end
 
   def authenticate
     #

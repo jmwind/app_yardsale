@@ -20,14 +20,18 @@ class ShopTest < ActiveSupport::TestCase
     assert @shop.valid?
   end
 
-  test "name should be present" do
+  test "url should be present" do
     @shop.url = "     "
+    assert_not @shop.valid?
+    @shop.url = ""
     assert_not @shop.valid?
   end
 
-  test "email should be present" do
-    @shop.shop_id = "     "
-    assert_not @shop.valid?
-  end
+  #test "create from session" do
+  #  session = ShopifyAPI::Session.new("foo.myshopify.com", "faketoken")
+  #  shop = Shop.find_or_create_from_api(session)
+  #  assert shop.valid?
+  #  assert_equal shop.url, session.url
+  #end
 
 end

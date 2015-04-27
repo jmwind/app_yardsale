@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427011208) do
+ActiveRecord::Schema.define(version: 20150427023652) do
 
   create_table "shops", force: :cascade do |t|
     t.string   "url"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20150427011208) do
     t.string   "name"
     t.string   "owner"
     t.string   "email"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.datetime "last_login_at"
   end
 
   add_index "shops", ["shop_id"], name: "index_shops_on_shop_id", unique: true

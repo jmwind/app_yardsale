@@ -17,4 +17,7 @@ EmbededApp::Application.routes.draw do
   get 'error' => 'home#error'
 
   root :to => 'home#index'
+
+  # webhook app/uninstall
+  match '/webhooks/app/uninstalled' => 'webhooks#uninstalled', :via => :post
 end
