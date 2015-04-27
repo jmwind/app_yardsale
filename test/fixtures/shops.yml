@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+shop1:
+  url: pixelist.myshopify.com
+  api_token: 'somerandom'
+  oauth_token: 'somerandom'
+  status: 'active'
+  name: Pixel Store
+  owner: John Pixel
+  email: john@pixelist.com
+
+shop2:
+  url: sailspro.myshopify.com
+  api_token: 'somerandom'
+  oauth_token: 'somerandom'
+  status: 'cancelled'
+  name: Sails Pro
+  owner: Gabriel Luff
+  email: gabrial@sailspro.com

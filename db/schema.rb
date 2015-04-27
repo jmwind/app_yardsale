@@ -11,6 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20150427011208) do
+
+  create_table "shops", force: :cascade do |t|
+    t.string   "url"
+    t.string   "shop_id"
+    t.string   "api_token"
+    t.string   "oauth_token"
+    t.text     "settings"
+    t.string   "status"
+    t.string   "name"
+    t.string   "owner"
+    t.string   "email"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "shops", ["shop_id"], name: "index_shops_on_shop_id", unique: true
+  add_index "shops", ["url"], name: "index_shops_on_url", unique: true
 
 end
