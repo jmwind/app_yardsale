@@ -13,14 +13,12 @@ class Shop < ActiveRecord::Base
   scope :cancelled,    -> { where(:status => 'cancelled') }
 
   def self.store(session)
-    logger.debug "Shop.store: #{session}"
     shop = self.new(url: session.url, oauth_token: session.token)
     shop.save!
     shop.url
   end
 
   def self.retrieve(session)
-    logger.debug "Shop.retrieve: #{session}"
     if shop = self.where(url: session.url).first
       logger.debug "Shop.retrieve found: #{shop.url} #{shop.oauth_token}"
       ShopifyAPI::Session.new(shop.url, shop.oauth_token)
