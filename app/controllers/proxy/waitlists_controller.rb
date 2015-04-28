@@ -5,7 +5,9 @@ class Proxy::WaitlistsController < RemoteAreaController
   before_filter :clean_parameters
 
   def index
-    @html = render_to_string(:template => "/proxy/waitlists/index", :formats => [:html], :layout => false, :locals => {:product_id => remote_id_param})
+
+
+    @html = render_to_string(:template => "/proxy/waitlists/index", :formats => [:html], :layout => false, :locals => {:product_id => remote_id_param, :product_available => product_available?})
     respond_to do |format|
       format.json { render :json => {:success => true, :html => @html}, :callback => @callback }
     end
@@ -30,6 +32,15 @@ class Proxy::WaitlistsController < RemoteAreaController
   def clean_parameters
     @callback = params.delete(:callback)
     params.delete(:_)
+  end
+
+  def product_available?
+    variants = ShopifyAPI::Product.find(remote_id_param).variants
+    num = 0
+    variants.each do |variant|
+      num += variant.inventory_quantity
+    end
+    num > 0
   end
 
 end
