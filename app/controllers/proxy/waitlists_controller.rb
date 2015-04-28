@@ -1,7 +1,6 @@
 class Proxy::WaitlistsController < RemoteAreaController
 
   before_filter :load_or_initialize_product, :only => [:index, :product]
-  #around_filter :respond_with_jsonp
   before_filter :clean_parameters
 
   def index
@@ -33,6 +32,7 @@ class Proxy::WaitlistsController < RemoteAreaController
   end
 
   def product_available
+    # XXX Cache and use webhooks to keep inventory numbers for each product
     variants = ShopifyAPI::Product.find(remote_id_param).variants
     num = 0
     variants.each do |variant|
