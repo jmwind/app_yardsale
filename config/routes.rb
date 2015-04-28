@@ -18,6 +18,15 @@ EmbededApp::Application.routes.draw do
 
   root :to => 'home#index'
 
+  #
+  # API
+  #
+  namespace :proxy do
+    resources :waitlists, :only => [:index, :create] do
+        get :product,  :on => :collection
+    end
+  end
+
   # webhook app/uninstall
   match '/webhooks/app/uninstalled' => 'webhooks#uninstalled', :via => :post
 end

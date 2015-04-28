@@ -1,11 +1,12 @@
 module Settings
-  SPAM_ENGINE_BLOG = "http://grapevine.heroku.com"
+  SPAM_ENGINE_BLOG = "http://xxx.heroku.com"
   SPAM_ENGINE_KEY  = "XXX"
 
   mattr_accessor :google_analytics_code
   self.google_analytics_code = "XXX"
 
   mattr_accessor :host
+
   mattr_accessor :webhook_url
   mattr_accessor :port
   mattr_accessor :email

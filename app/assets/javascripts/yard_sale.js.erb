@@ -1,3 +1,23 @@
+var YSPARAMS = {host:"https://appyardsale.localtunnel.me"};
+
+var YS = YS || {};
+YS.shop       = Shopify.shop;
+YS.api_url    = YSPARAMS.host + "/proxy"; // proxy api
+YS.product_id = $("#yardsale-product").attr('data-id');
+YS.elSettings = {};
+YS.extraAjaxParams = {shop: YS.shop};
+YS.noop       = function(){};  // noop
+
+
+YS.productCallback = function(data) {
+  $("#yardsale-product").append(data['html']);
+};
+
+YS.productList = function() {
+  var params = $.extend({product_id: YS.product_id}, YS.extraAjaxParams);
+  $.get(YS.api_url + "/waitlists", params, YS.productCallback, "jsonp");
+}
+
 $( document ).ready(function() {
-  $("#shopify-yardsale").append("<p>Script Tags ROCKS!!!</p>");
+  YS.productList();
 });

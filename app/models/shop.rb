@@ -3,6 +3,7 @@ class Shop < ActiveRecord::Base
   include ScriptTagManagement
   include ApiAccess
 
+  cattr_accessor :current
   attr_accessor :first_install
 
   # Validations
