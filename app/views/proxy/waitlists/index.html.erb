@@ -1,8 +1,9 @@
 <div class="gvsection" id="gv_dashboard">
   <div class="gvrating">
-    <p>
-      This was generated on the server. And is quite boring. <strong><%= product_available %></strong> people are
-      waiting for this item. <a href="#">Join the waiting list</a>
-    </p>
+      <% if product_available == 0 %>
+      <p>
+        The item has been reserved, but not payed for yet. You can <a href="#">Join the waiting list</a>!
+      </p>
+      <% end %>
   </div>
 </div>
