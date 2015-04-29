@@ -22,6 +22,10 @@ YS.toggleForm = function(event) {
   $(".waitlist_form").slideToggle();
 };
 
+YS.submitForm = function(event) {
+  event.preventDefault();
+};
+
 $( document ).ready(function() {
   var el = $(".yardsale-product");
   if( el && el.length > 0) {

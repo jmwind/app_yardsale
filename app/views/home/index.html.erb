@@ -5,13 +5,13 @@
       <div class="section-row">
         <div class="section-listing">
             <div class="section-content">
-              <label>Waiting Lists by Product</label>
-              <p>People can wait for things. And get them</p>
+              <label>Waiting Lists</label>
+              <p>People can wait for things.</p>
               <label>Products</label>
                 <ol>
-                <% @products.each do |product| %>
+                <% @product_buyers.each do |product| %>
                 <li>
-                  <%= product.title %>, <%= product.vendor %>
+                  <%= product.buyers.count %>, <%= product.remote_id %>
                 </li>
                 <% end %>
               </ol>

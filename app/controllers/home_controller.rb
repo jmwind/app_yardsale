@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @products = ShopifyAPI::Product.all
+    @product_buyers = Shop.first.products
   end
 
   def modal

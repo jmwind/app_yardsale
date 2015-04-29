@@ -1,8 +1,8 @@
 <div class="waitlist_section" id="waitlist_section">
   <% if product_available == 0 %>
-    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.      >>> <a class="wl_form_toggle" href="#">Join the waiting list</a></p>
+    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/><a class="wl_form_toggle" href="#">Join the waiting list</a></p>
     <div class="waitlist_form" style="display: none">
-      <p>There are <%= @product.buyers.count %> people in the waiting list.</p>
+      <p>There are <%= @product.buyers.count %> people waiting.</p>
 
       <%= form_tag("#{Settings.host}/proxy/waitlists", format: :js, id: "waitlist_form_div", method: "post", remote: true) do %>
 
@@ -18,7 +18,7 @@
         <%= hidden_field_tag :shop , @shop.url %>
         <%= hidden_field_tag :product_id , product_id %>
 
-        <%= submit_tag("E-mail me when available") %>
+        <%= submit_tag("E-mail me when available", onclick: "YS.submitform();return false;") %>
       <% end %>
     </div>
   <% end %>

@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
     Shop.transaction do
       @shop = Shop.find_or_create_from_api(session)
       @shop.logged_in!
+      Shop.current = @shop
     end
   end
 
