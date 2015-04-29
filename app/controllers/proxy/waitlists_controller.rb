@@ -1,16 +1,25 @@
 class Proxy::WaitlistsController < RemoteAreaController
 
-  before_filter :load_or_initialize_product, :only => [:index, :product]
+  before_filter :load_or_initialize_product, :only => [:index, :product, :create]
   before_filter :clean_parameters
 
   def index
-    @html = render_to_string(:template => "/proxy/waitlists/index", :formats => [:html], :layout => false, :locals => {:shop => @shop, :product_id => remote_id_param, :product_available => product_available})
+    @html = render_to_string(:template => "/proxy/waitlists/index",
+      :formats => [:html], :layout => false,
+      :locals => {:shop => @shop, :product_id => remote_id_param,
+                  :product => @product, :product_available => product_available})
     respond_to do |format|
       format.json { render :json => {:success => true, :html => @html}, :callback => @callback }
     end
   end
 
   def create
+    # add validation that this buyer doesn't exist already and return proper error
+    @buyer = @product.buyers.build
+    @buyer.name = params["name"]
+    @buyer.email = params["email"]
+    @buyer.raise = params["raise"]
+    @buyer.save!
     respond_to do |format|
         format.html { render :nothing => true }
         format.js
@@ -27,7 +36,10 @@ class Proxy::WaitlistsController < RemoteAreaController
   end
 
   def load_or_initialize_product
-
+    if @product = @shop.products.where(remote_id: remote_id_param).first_or_create
+      logger.info("[REMOTE] Product ID from params #{@product.remote_id}")
+      @product
+    end
   end
 
   def clean_parameters
@@ -43,7 +55,6 @@ class Proxy::WaitlistsController < RemoteAreaController
       q = variant.inventory_quantity
       num += q < 0 ? 1 : q
     end
-    logger.info("[REMOTE] Product inventory #{num} for #{variants.count}")
     num
   end
 

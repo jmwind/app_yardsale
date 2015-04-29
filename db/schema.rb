@@ -11,11 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427023652) do
+ActiveRecord::Schema.define(version: 20150429054223) do
+
+  create_table "buyers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "note"
+    t.integer  "raise",      default: 0
+    t.string   "state",      default: "new"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "product_id"
+  end
+
+  add_index "buyers", ["email"], name: "index_buyers_on_email", unique: true
+
+  create_table "products", force: :cascade do |t|
+    t.string   "remote_id"
+    t.integer  "inventory_count",             default: 0
+    t.datetime "inventory_count_lastupdated"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "shop_id"
+  end
+
+  add_index "products", ["remote_id"], name: "index_products_on_remote_id", unique: true
+  add_index "products", ["shop_id"], name: "index_products_on_shop_id"
 
   create_table "shops", force: :cascade do |t|
     t.string   "url"
-    t.string   "shop_id"
+    t.integer  "shop_id"
     t.string   "api_token"
     t.string   "oauth_token"
     t.text     "settings"

@@ -6,6 +6,8 @@ class Shop < ActiveRecord::Base
   cattr_accessor :current
   attr_accessor :first_install
 
+  has_many :products, dependent: :destroy
+
   # Validations
   validates :url, presence: true, uniqueness: true
   validates :shop_id, uniqueness: true
