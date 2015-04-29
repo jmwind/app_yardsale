@@ -1,9 +1,23 @@
-<div class="gvsection" id="gv_dashboard">
-  <div class="gvrating">
-      <% if product_available == 0 %>
-      <p>
-        The item has been reserved, but not payed for yet. You can <a href="#">Join the waiting list</a>!
-      </p>
+<div class="waitlist_section" id="waitlist_section">
+  <% if product_available == 0 %>
+    <p><%= image_tag("#{Settings.host}/assets/exclamation.png", :alt => "wow", :size => "16x16") %> This item has been reserved, but not payed for yet. You can <a class="wl_form_toggle" href="#">Join the waiting list</a>!</p>
+    <div class="waitlist_form" style="display: none">
+      <%= form_tag("#{Settings.host}/proxy/waitlists", format: :js, id: "waitlist_form_div", method: "post", remote: true) do %>
+
+        <%= label_tag(:wl_form_name_l, "Name") %>
+        <%= text_field_tag(:wl_form_name, '', autofocus: true) %>
+
+        <%= label_tag(:wl_form_email_l, "E-mail") %>
+        <%= email_field_tag(:wl_form_email) %>
+
+        <%= label_tag(:wl_form_raise_l, "Raise") %>
+        <%= text_field_tag(:wl_form_raise) %>
+
+        <%= hidden_field_tag :shop , @shop.url %>
+        <%= hidden_field_tag :product_id , product_id %>
+
+        <%= submit_tag("E-mail me when available") %>
       <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
