@@ -30,13 +30,8 @@ class HomeController < ApplicationController
 
   def form_page
     puts "FORM PAGE #{params}"
-    if request.post?
-      if params[:name].present?
-        flash[:notice] = "Created #{ params[:colour] } unicorn: #{ params[:name] }."
-      else
-        flash[:error] = "Name must be set."
-      end
-    end
+    @product_origin = ShopifyAPI::Product.where(id: params[:id]).first.attributes
+    @product = Shop.first.products.where(remote_id: params[:product_id]).first
   end
 
   def pagination
