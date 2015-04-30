@@ -94,12 +94,12 @@ There are more than purchases logistics to deal with when selling many personal 
 
 ### Pricing
 
-See the price range in a specific channel for an equivalently named product. This allows you to set the price based going market rates.
-Set prices based on relative range of market (eg, 10% more or 10% less)
+- See the price range in a specific channel for an equivalently named product. This allows you to set the price based going market rates.
+- Set prices based on relative range of market (eg, 10% more or 10% less)
 
 ### Ad Purchasing
 
-Manage ad purchasing and analytics to multiple channels.
-Post and purchase ads directly from within Shopify.
-Renew the ads as long as the product is still available.
-Link directly to a pre-filled cart (aka Buy Button release on March 31st).
+- Manage ad purchasing and analytics to multiple channels.
+- Post and purchase ads directly from within Shopify.
+- Renew the ads as long as the product is still available.
+- Link directly to a pre-filled cart (aka Buy Button release on March 31st).

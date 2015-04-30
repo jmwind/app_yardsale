@@ -1,4 +1,4 @@
-var YSPARAMS = {host:"<%= Settings.host %>/"};
+var YSPARAMS = {host:"https://appyardsale.localtunnel.me/"};
 
 var YS = YS || {};
 YS.shop       = Shopify.shop;
@@ -24,12 +24,23 @@ YS.toggleForm = function(event) {
 
 YS.submitForm = function(event) {
   event.preventDefault();
+  if(YS.validateForm()) {
+    var params = $( "#waitlist_form_div" ).serialize();
+    $.post(YS.api_url + "/waitlists", params)
+    $(".waitlist_section").html("<br/><p>Thank you! We will e-mail you if the item becomes available.</p>");
+    YS.toggleForm(event);
+  }
+};
+
+YS.validateForm = function() {
+    return true;
 };
 
 $( document ).ready(function() {
   var el = $(".yardsale-product");
   if( el && el.length > 0) {
     $(".yardsale-product").on("click", ".wl_form_toggle", YS.toggleForm);
+    $(".yardsale-product").on("click", ".waitlist_submit", YS.submitForm);
     YS.productList();
   }
 });

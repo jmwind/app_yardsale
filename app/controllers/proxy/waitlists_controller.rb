@@ -15,6 +15,9 @@ class Proxy::WaitlistsController < RemoteAreaController
 
   def create
     # add validation that this buyer doesn't exist already and return proper error
+    if @product.buyers.where(email: params["email"]).present?
+      render :status => :conflict, :text => "This e-mail address is already in the waiting list." and return
+    end    
     @buyer = @product.buyers.build
     @buyer.name = params["name"]
     @buyer.email = params["email"]
@@ -23,7 +26,7 @@ class Proxy::WaitlistsController < RemoteAreaController
     respond_to do |format|
         format.html { render :nothing => true }
         format.js
-    end
+    end    
   end
 
   def product
