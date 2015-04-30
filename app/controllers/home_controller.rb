@@ -29,6 +29,7 @@ class HomeController < ApplicationController
   end
 
   def form_page
+    puts "FORM PAGE #{params}"
     if request.post?
       if params[:name].present?
         flash[:notice] = "Created #{ params[:colour] } unicorn: #{ params[:name] }."

@@ -1,15 +1,11 @@
 <script type="text/javascript">
-   window.mainPageTitle = 'Form page';
+   window.mainPageTitle = 'Product Waiting List';
 
   ShopifyApp.ready(function(){
     ShopifyApp.Bar.initialize({
       title: window.mainPageTitle,
       icon: '/icon.png',
-      buttons: {
-        primary: {
-          label: "Create Unicorn",
-          message: 'save-unicorn-form-message'
-        },
+      buttons: {       
         secondary: {
           label: "Back",
           href: "/",
@@ -17,36 +13,36 @@
         }
       }
     });
-
-  <% if flash[:notice] %>
-    ShopifyApp.flashNotice("<%= flash[:notice] %>");
-  <% end %>
-
-  <% if flash[:error] %>
-    ShopifyApp.flashError("<%= flash[:error] %>");
-  <% end %>
-
   });
 </script>
 
-<h1>Create new Unicorn</h1>
-
-<p>A normal form submitted by a data tag and a button in Shopify. Embedded apps can mostly work exactly like a normal app, except with Shopify admin UI integration.</p>
-
-<form method="POST" action="form_page" data-shopify-app-submit="save-unicorn-form-message">
-  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-  <p>
-    <label>Name:</label>
-    <input type="text" name="name"/>
-  </p>
-
-  <p>
-    <label>Colour:</label>
-    <select name="colour">
-      <option>Pink</option>
-      <option>Rainbow</option>
-      <option>Purple</option>
-    </select>
-  </p>
-
-</form>
+<div class="section">
+    <div class="section-content">
+      <div class="section-row">
+        <div class="section-listing">
+          <div class="section-options">
+            <div class="section-filter">
+              <div>
+                <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by product"></div>
+              </div>
+            </div>
+            <div class="section-content">
+              <div class="section-row">
+                <table class="table-section">
+                  <thead>
+                    <tr>
+                      <th class="sortable">Name</th>
+                      <th class="sortable">E-mail</th>
+                      <th class="sortable">Raise</th>
+                    </tr>
+                  </thead>
+                  <tbody>                  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
