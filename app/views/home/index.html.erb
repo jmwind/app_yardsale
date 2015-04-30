@@ -1,20 +1,39 @@
 <%= render "/common/top_bar" %>
-
-  <div class="section">
+<div class="section">
     <div class="section-content">
       <div class="section-row">
         <div class="section-listing">
+          <div class="section-options">
+            <div class="section-filter">
+              <div>
+                <div><a class="btn filter-left ico-down" href="#top">Filter</a></div>
+                <div class="filter-freecell"><input class="input-search" type="text" placeholder="Information about this filter"></div>
+              </div>
+            </div>
             <div class="section-content">
-              <label>Waiting Lists</label>
-              <p>People can wait for things.</p>
-              <label>Products</label>
-                <ol>
-                <% @product_buyers.each do |product| %>
-                <li>
-                  <%= product.buyers.count %>, <%= product.remote_id %>
-                </li>
-                <% end %>
-              </ol>
+              <div class="section-row">
+                <table class="table-section">
+                  <thead>
+                    <tr>
+                      <th class="sortable">Product</th>
+                      <th class="sortable">Waiting List Size</th>
+                      <th class="sortable">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <% @product_buyers.each do |product| %>
+                    <% id = product.remote_id %>
+                    <% title = @product_map[id] %>
+                    <tr>
+                    <td><a href="#top"><%= title %></a></td>
+                    <td><span class="lightgray"><%= product.buyers.count %></span></td>
+                    <td><a href="#top" class="btn default">Notify</a><a href="#top" class="btn default">Delete</a></td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>

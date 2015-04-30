@@ -4,6 +4,8 @@ class HomeController < ApplicationController
 
   def index
     @products = ShopifyAPI::Product.all
+    @product_map = @products.each_with_object(Hash.new("not found")) { |e, a| a["#{e.attributes[:id]}"] = e.attributes[:title] }
+    # XXX find the right shop, not the first!!!
     @product_buyers = Shop.first.products
   end
 
