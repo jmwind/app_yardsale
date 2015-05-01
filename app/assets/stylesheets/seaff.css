@@ -108,6 +108,15 @@ form {
   width: 100%;
 }
 
+.waitlist_section {
+  background: #C4EDFF no-repeat 10px 50%;
+  border: 1px solid #c4edff;
+  color: #555;
+  border-radius: 10px;
+  padding: 2px 2px 2px 12px;
+  margin: 10px;
+}
+
 /****************************************** 
 * LINKS
 *******************************************/

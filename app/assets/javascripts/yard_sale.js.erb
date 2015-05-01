@@ -3,10 +3,21 @@ var YSPARAMS = {host:"https://appyardsale.localtunnel.me/"};
 var YS = YS || {};
 YS.shop       = Shopify.shop;
 YS.api_url    = YSPARAMS.host + "proxy"; // proxy api
+YS.asset_url    = YSPARAMS.host + "assets"; // proxy api
 YS.product_id = $(".yardsale-product").attr('data-id');
 YS.elSettings = {};
 YS.extraAjaxParams = {shop: YS.shop};
 YS.noop       = function(){};  // noop
+
+YS.loadStylesheet = function() {
+  var s = document.createElement("link");
+  s.setAttribute("rel", "stylesheet");
+  s.setAttribute("type", "text/css");
+  s.setAttribute("href", YS.asset_url + "/yard_sale.css");
+  s.setAttribute("media", 'screen');
+  var doc = document.getElementsByTagName('title')[0];
+  doc.parentNode.insertBefore(s,doc);
+};
 
 YS.productCallback = function(data) {
   $(".yardsale-product").append(data['html']);
@@ -36,11 +47,14 @@ YS.validateForm = function() {
     return true;
 };
 
-$( document ).ready(function() {
-  var el = $(".yardsale-product");
-  if( el && el.length > 0) {
-    $(".yardsale-product").on("click", ".wl_form_toggle", YS.toggleForm);
-    $(".yardsale-product").on("click", ".waitlist_submit", YS.submitForm);
-    YS.productList();
-  }
-});
+(function() {
+  YS.loadStylesheet();
+  $(document).ready(function() {
+    var el = $(".yardsale-product");
+    if( el && el.length > 0) {
+      $(".yardsale-product").on("click", ".wl_form_toggle", YS.toggleForm);
+      $(".yardsale-product").on("click", ".waitlist_submit", YS.submitForm);
+      YS.productList();
+    }
+  });
+})();

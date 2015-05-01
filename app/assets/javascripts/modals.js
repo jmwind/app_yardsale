@@ -2,6 +2,25 @@ window.alertModal = function(){
   ShopifyApp.Modal.alert('Message for an alert window.');
 }
 
+function filter2 (phrase, _id) {
+	var words = phrase.value.toLowerCase().split(" ");
+	var table = $(_id);
+	var ele;
+	for (var r = 1; r < table[0].rows.length; r++){
+		ele = table[0].rows[r].innerHTML.replace(/<[^>]+>/g,"");
+	        var displayStyle = 'none';
+	        for (var i = 0; i < words.length; i++) {
+		    if (ele.toLowerCase().indexOf(words[i])>=0)
+			displayStyle = '';
+		    else {
+			displayStyle = 'none';
+			break;
+		    }
+	        }
+		table[0].rows[r].style.display = displayStyle;
+	}
+}
+
 window.confirmModal = function () {
 
   ShopifyApp.Modal.confirm({

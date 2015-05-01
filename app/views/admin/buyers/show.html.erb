@@ -22,7 +22,7 @@
       <div class="section-cell">
         <h1>Order Details</h1>
         <% if @order.nil? %>
-          <p>This product hasn't been ordered yet.</p> 
+          <p>This product has no pending orders. Verify the stock before notifying the waiting list.</p> 
         <% else %>
           <p>Name: Jean-Michel Lemieux</br>
              Contact Details: 34 Asturias Ave</br>
@@ -43,7 +43,7 @@
 <div class="section-options">
   <div class="section-filter">
     <div>
-      <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by e-mail or name"></div>
+      <div class="filter-freecell"><input class="input-search" onkeyup="filter2(this, '.table-section', 1);" type="text" placeholder="Filter by e-mail or name"></div>
     </div>
   </div>
   <div class="section-content">

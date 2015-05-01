@@ -1,20 +1,18 @@
 <div class="waitlist_section" id="waitlist_section">
   <br/>
   <% if product_available == 0 %>
-    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>Please <a class="wl_form_toggle" href="#">Join the waiting list</a></p>
+    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>Please <a class="wl_form_toggle" href="#">Join the waiting list</a> to propose another price and you'll be notified in case it doesn't sell.</p>
     <div class="waitlist_form" style="display: none">
       <p>There are <%= @product.buyers.count %> people waiting.</p>
 
       <%= form_tag("#{Settings.host}/proxy/waitlists", format: :js, id: "waitlist_form_div", method: "post", remote: true) do %>
 
-        <%= label_tag(:name_l, "Name") %>
-        <%= text_field_tag(:name, '', autofocus: true) %>
+        <%= text_field_tag(:name, '', placeholder: "name", autofocus: true, class: "white-bkg") %>
 
-        <%= label_tag(:email_l, "E-mail") %>
-        <%= email_field_tag(:email) %>
+        <%= email_field_tag(:email, '', placeholder: "e-mail address", class: "white-bkg") %>
 
         <%= label_tag(:raise_l, "Raise the price (You can offer to pay more once. The reservation holder will have rights to match your price.)") %>
-        <%= text_field_tag(:raise) %>
+        <%= text_field_tag(:raise, "0.00", class: "white-bkg") %>
 
         <%= hidden_field_tag :shop , @shop.url %>
         <%= hidden_field_tag :product_id , product_id %>
