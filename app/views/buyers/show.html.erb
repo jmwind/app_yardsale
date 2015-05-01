@@ -1,0 +1,74 @@
+<script type="text/javascript">
+   window.mainPageTitle = 'Waiting List - <%= @product_origin[:title] %> ';
+
+  ShopifyApp.ready(function(){
+    ShopifyApp.Bar.initialize({
+      title: window.mainPageTitle,
+      icon: '/icon.png',
+      buttons: {       
+        secondary: {
+          label: "Back",
+          href: "/",
+          target: 'app'
+        }
+      }
+    });
+  });
+</script>
+
+<div class="section">
+  <div class="section-content">
+    <div class="section-row">
+      <div class="section-cell">
+        <h1>Order Details</h1>
+        <p>Name: Jean-Michel Lemieux</br>
+           Contact Details: 34 Asturias Ave</br>
+           Ordered On: June 24th, 2015</br>
+           Price: $56.99
+           </p>
+        <p><a href="#">Link to order</a></p>
+      </div>
+    </div>
+  </div>
+</div>  
+
+<div class="section">
+<div class="section-content">
+<div class="section-row">
+<div class="section-listing">
+<div class="section-options">
+  <div class="section-filter">
+    <div>
+      <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by e-mail or name"></div>
+    </div>
+  </div>
+  <div class="section-content">
+    <div class="section-row">
+      <table class="table-section">
+        <thead>
+          <tr>
+            <th class="sortable">Name</th>
+            <th class="sortable">E-mail</th>
+            <th class="sortable">Raise</th>
+            <th class="sortable">Actions</th>
+          </tr>
+        </thead>
+        <tbody>  
+         <% id = @product.remote_id %>
+         <% @buyers.each do |buyer| %>
+         <tr>
+         <td><%= buyer.name %></td>
+         <td><%= buyer.email %></td>
+         <td><%= buyer.raise %></td>
+         <td><a href="#top" class="btn default">Accept</a> <a href="#top" class="btn">Clear</a> <%= link_to("Delete", "buyers?product_id=#{id}&email=#{buyer.email}", method: :delete, class: "btn", data: { confirm: "Are you sure?" }) %></td>
+         </tr>
+         <% end %>                 
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>

@@ -11,3 +11,6 @@ List of things that are f#$%@
 - why is yard_sale.js being loaded into the admin? Move or remove from the asset pipeline?
 - A/B test a pop-up instead of an inline form
 - logic around raise restrictions by e-mail
+- warning messages on destroy actions, have to add another listener and intercept linke_to action
+- use link_to everywhere and proper parameter sending
+- sortable columns

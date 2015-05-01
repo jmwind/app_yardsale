@@ -8,37 +8,11 @@ class HomeController < ApplicationController
     # XXX find the right shop, not the first!!!
     @product_buyers = Shop.first.products
   end
-
-  def modal
-  end
-
-  def modal_buttons
-  end
-
-  def regular_app_page
-  end
-
-  def buttons
-  end
-
-  def help
-  end
-
-  def error
-    raise "An error page"
-  end
-
-  def form_page
-    @product_origin = ShopifyAPI::Product.where(id: params[:id]).first.attributes
+ 
+  def destroy
     @product = Shop.first.products.where(remote_id: params[:product_id]).first
-    @buyers = @product.buyers
-  end
-
-  def pagination
-    @total_pages = 3
-    @page = (params[:page].presence || 1).to_i
-    @previous_page = "/pagination?page=#{ @page - 1 }" if @page > 1
-    @next_page = "/pagination?page=#{ @page + 1 }" if @page < @total_pages
+    @product.destroy
+    redirect_to "/"
   end
 
 end
