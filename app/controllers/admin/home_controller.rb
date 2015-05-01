@@ -3,7 +3,7 @@ class Admin::HomeController < AdminAreaController
   def index
     @products = ShopifyAPI::Product.find(:all, :params => {:fields => [:id, :title]})
     @product_map = @products.each_with_object(Hash.new(0)) { |e, a| a["#{e.attributes[:id]}"] = e.attributes[:title] }
-    @product_buyers = @shop.products
+    @product_buyers = @shop.products.includes(:buyers).where.not(:buyers => { :product_id => nil })
   end
  
   def destroy

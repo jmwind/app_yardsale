@@ -27,7 +27,7 @@ class Admin::BuyersController < AdminAreaController
   end
   
   def load_buyer
-    product.buyers.where(email: params[:email]).first
+    @product.buyers.where(email: params[:email]).first
   end
   
   def order_for(product_id)

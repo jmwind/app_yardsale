@@ -57,7 +57,7 @@ class Proxy::WaitlistsController < RemoteAreaController
     num = 0
     variants.each do |variant|
       q = variant.inventory_quantity
-      num += q < 0 ? 1 : q
+      num += q
     end
     num
   end

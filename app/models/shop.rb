@@ -39,6 +39,7 @@ class Shop < ActiveRecord::Base
         :email       => remote_shop.email,
         :owner       => remote_shop.shop_owner,
         :name        => remote_shop.name,
+        :shop_id     => remote_shop.id,
         :url         => session.url,
         :oauth_token => session.token
       }

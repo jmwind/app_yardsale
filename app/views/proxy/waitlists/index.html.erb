@@ -1,9 +1,9 @@
+<% if product_available < 1 %>
 <div class="waitlist_section" id="waitlist_section">
-  <br/>
-  <% if product_available == 0 %>
-    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>Please <a class="wl_form_toggle" href="#">Join the waiting list</a> to propose another price and you'll be notified in case it doesn't sell.</p>
+  <br/>  
+    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>Go ahead and <a class="wl_form_toggle" href="#">join the waiting list</a> and you'll be notified when the items back on the market.</p>
     <div class="waitlist_form" style="display: none">
-      <p>There are <%= @product.buyers.count %> people waiting.</p>
+      <p>There are <%= pluralize(@product.buyers.count, "people") %> on the waiting list.</p>
 
       <%= form_tag("#{Settings.host}/proxy/waitlists", format: :js, id: "waitlist_form_div", method: "post", remote: true) do %>
 
@@ -11,14 +11,16 @@
 
         <%= email_field_tag(:email, '', placeholder: "e-mail address", class: "white-bkg") %>
 
-        <%= label_tag(:raise_l, "Raise the price (You can offer to pay more once. The reservation holder will have rights to match your price.)") %>
-        <%= text_field_tag(:raise, "0.00", class: "white-bkg") %>
+        <div class="raise_section">
+          <%= label_tag(:raise_l, "(optional) Raise the price - If you really, really want this item you can offer to pay more only ONCE. The reservation holder will have rights to match your price.") %>
+          <%= text_field_tag(:raise, "0.00", class: "white-bkg") %>
+        </div>
 
         <%= hidden_field_tag :shop , @shop.url %>
         <%= hidden_field_tag :product_id , product_id %>
 
-        <%= submit_tag("E-mail me when available", class: "waitlist_submit", onclick: "YS.submitform();return false;") %>
+        <%= submit_tag("E-mail me when available", class: "waitlist_submit btn action small", onclick: "YS.submitform();return false;") %>
       <% end %>
     </div>
-  <% end %>
 </div>
+<% end %>
