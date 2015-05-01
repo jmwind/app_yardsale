@@ -26,7 +26,7 @@
            Ordered On: June 24th, 2015</br>
            Price: $56.99
            </p>
-        <p><a href="#">Link to order</a></p>
+        <p><a href="#">See order</a></p>
       </div>
     </div>
   </div>
@@ -60,7 +60,13 @@
          <td><%= buyer.name %></td>
          <td><%= buyer.email %></td>
          <td><%= buyer.raise %></td>
-         <td><a href="#top" class="btn default">Accept</a> <a href="#top" class="btn">Clear</a> <%= link_to("Delete", "buyers?product_id=#{id}&email=#{buyer.email}", method: :delete, class: "btn", data: { confirm: "Are you sure?" }) %></td>
+         <td>
+           <a href="#top" class="btn default">Accept</a> 
+           
+           <%= link_to("Clear", clear_buyers_path(:product_id=> id, :email=> buyer.email), method: :post, class: "btn", data: { confirm: "Are you sure?" }) %>
+           
+           <%= link_to("Delete", "buyers?product_id=#{id}&email=#{buyer.email}", method: :delete, class: "btn", data: { confirm: "Are you sure?" }) %>    
+         </td>            
          </tr>
          <% end %>                 
         </tbody>

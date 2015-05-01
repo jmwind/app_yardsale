@@ -8,9 +8,12 @@ EmbededApp::Application.routes.draw do
   #
   # Admin
   #
+  delete 'form_page' => 'home#destroy'
   root :to => 'home#index'  
-  resource :buyers
-
+  resource :buyers do
+    post :clear, on: :member
+  end
+  
   #
   # API
   #

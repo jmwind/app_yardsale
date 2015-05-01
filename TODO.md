@@ -14,3 +14,5 @@ List of things that are f#$%@
 - warning messages on destroy actions, have to add another listener and intercept linke_to action
 - use link_to everywhere and proper parameter sending
 - sortable columns
+- ajax add/remove from tables on all actions
+- when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else

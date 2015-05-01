@@ -15,4 +15,11 @@ class BuyersController < ApplicationController
     redirect_to action: 'show', product_id: params[:product_id]
   end	
   
+  def clear
+    product = Shop.first.products.where(remote_id: params[:product_id]).first
+    buyer = product.buyers.where(email: params[:email]).first
+    buyer.update(:raise => 0)
+    redirect_to action: 'show', product_id: params[:product_id]
+  end
+  
 end
