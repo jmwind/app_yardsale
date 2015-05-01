@@ -26,13 +26,13 @@
             <% title = @product_map[id] %>
             <tr>
             <td>
-              <a href="buyers?product_id=<%= id %>"><%= title %></a> 
+              <a href="buyers?product_id=<%= id %>&title=<%= title %>"><%= title %></a> 
               (<a href="#" onclick="ShopifyApp.redirect('/products/<%= id %>}')">inventory</a>)</td>
             <td><span class="lightgray"><%= product.buyers.count %></span></td>
             <td>
               <% raises = product.num_raises %>
               <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span></span> </td>
-            <td><a href="#top" class="btn default">Notify</a> <%= link_to("Delete", "form_page?product_id=#{id}", method: :delete, class: "btn", data: { confirm: "Are you sure?" }) %></td>
+            <td><a href="#top" class="btn default">Notify</a> <%= link_to("Delete", "product?product_id=#{id}", method: :delete, class: "btn", data: { confirm: "Are you sure?" }) %></td>
             </tr>
           <% end %>
         </tbody>

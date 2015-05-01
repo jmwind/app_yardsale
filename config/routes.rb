@@ -8,10 +8,13 @@ EmbededApp::Application.routes.draw do
   #
   # Admin
   #
-  delete 'form_page' => 'home#destroy'
-  root :to => 'home#index'  
-  resource :buyers do
-    post :clear, on: :member
+  scope module: 'admin' do
+    get 'help' => 'home#help'
+    delete 'product' => 'home#destroy'
+    root :to => 'home#index'  
+    resource :buyers do
+      post :clear, on: :member
+    end
   end
   
   #

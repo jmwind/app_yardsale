@@ -1,5 +1,6 @@
 List of things that are f#$%@
 
+- send store admin an e-mail when someone gets added to the waiting
 - script tag takes too long to load as it fetches products from shopify. cache the inventory count?
 - had to comment out forgery filter in ApplicationController that is bogus
   - check out <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
@@ -16,4 +17,9 @@ List of things that are f#$%@
 - sortable columns
 - ajax add/remove from tables on all actions
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
-- optimize fetching from ShopifyAPI and limit the number of fields sent over the wire
+- add the liquid snippet checker to admin
+
+
+done
+
+x optimize fetching from ShopifyAPI and limit the number of fields sent over the wire
