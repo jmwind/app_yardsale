@@ -16,3 +16,4 @@ List of things that are f#$%@
 - sortable columns
 - ajax add/remove from tables on all actions
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
+- optimize fetching from ShopifyAPI and limit the number of fields sent over the wire

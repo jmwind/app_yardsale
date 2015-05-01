@@ -21,12 +21,16 @@
     <div class="section-row">
       <div class="section-cell">
         <h1>Order Details</h1>
-        <p>Name: Jean-Michel Lemieux</br>
-           Contact Details: 34 Asturias Ave</br>
-           Ordered On: June 24th, 2015</br>
-           Price: $56.99
-           </p>
-        <p><a href="#">See order</a></p>
+        <% if @order.nil? %>
+          <p>This product hasn't been ordered yet.</p> 
+        <% else %>
+          <p>Name: Jean-Michel Lemieux</br>
+             Contact Details: 34 Asturias Ave</br>
+             Ordered On: June 24th, 2015</br>
+             Price: $56.99
+             </p>
+          <p><a href="#" onclick="ShopifyApp.redirect('/orders/<%= @order[:id] %>}')"">See order</a></p>
+        <% end %>
       </div>
     </div>
   </div>
