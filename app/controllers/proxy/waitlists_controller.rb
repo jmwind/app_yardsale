@@ -4,7 +4,8 @@ class Proxy::WaitlistsController < RemoteAreaController
   before_filter :clean_parameters
 
   def index
-    @html = render_to_string(:template => "/proxy/waitlists/index",
+    @html = render_to_string(
+      :template => "/proxy/waitlists/index",
       :formats => [:html], :layout => false,
       :locals => {:shop => @shop, :product_id => remote_id_param,
                   :product => @product, :product_available => product_available})

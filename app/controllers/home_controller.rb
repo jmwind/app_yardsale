@@ -29,9 +29,9 @@ class HomeController < ApplicationController
   end
 
   def form_page
-    puts "FORM PAGE #{params}"
     @product_origin = ShopifyAPI::Product.where(id: params[:id]).first.attributes
     @product = Shop.first.products.where(remote_id: params[:product_id]).first
+    @buyers = @product.buyers
   end
 
   def pagination

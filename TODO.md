@@ -1,5 +1,6 @@
 List of things that are f#$%@
 
+- script tag takes too long to load as it fetches products from shopify. cache the inventory count?
 - had to comment out forgery filter in ApplicationController that is bogus
   - check out <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 - waitlist_controller::create should be able to update new buyers instead of setting each parameter
@@ -9,3 +10,4 @@ List of things that are f#$%@
 - spam handling
 - why is yard_sale.js being loaded into the admin? Move or remove from the asset pipeline?
 - A/B test a pop-up instead of an inline form
+- logic around raise restrictions by e-mail

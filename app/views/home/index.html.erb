@@ -1,42 +1,46 @@
 <%= render "/common/top_bar" %>
 <div class="section">
-    <div class="section-content">
-      <div class="section-row">
-        <div class="section-listing">
-          <div class="section-options">
-            <div class="section-filter">
-              <div>
-                <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by product"></div>
-              </div>
-            </div>
-            <div class="section-content">
-              <div class="section-row">
-                <table class="table-section">
-                  <thead>
-                    <tr>
-                      <th class="sortable">Product</th>
-                      <th class="sortable">Waiting List Size</th>
-                      <th class="sortable">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  <% @product_buyers.each do |product| %>
-                    <% id = product.remote_id %>
-                    <% title = @product_map[id] %>
-                    <tr>
-                    <td>
-                      <a href="form_page?product_id=<%= id %>"><%= title %></a> 
-                      (<a href="#" onclick="ShopifyApp.redirect('/products/<%= id %>}')">inventory</a>)</td>
-                    <td><span class="lightgray"><%= product.buyers.count %></span></td>
-                    <td><a href="#top" class="btn default">Notify</a><a href="#top" class="btn default">Delete</a></td>
-                    </tr>
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="section-content">
+<div class="section-row">
+<div class="section-listing">
+<div class="section-options">
+  <div class="section-filter">
+    <div>
+      <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by product"></div>
     </div>
   </div>
+  <div class="section-content">
+    <div class="section-row">
+      <table class="table-section">
+        <thead>
+          <tr>
+            <th class="sortable">Product</th>
+            <th class="sortable">Size</th>
+            <th class="sortable">Raises</th>
+            <th class="sortable">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @product_buyers.each do |product| %>
+          <% id = product.remote_id %>
+          <% title = @product_map[id] %>
+          <tr>
+          <td>
+            <a href="form_page?product_id=<%= id %>"><%= title %></a> 
+            (<a href="#" onclick="ShopifyApp.redirect('/products/<%= id %>}')">inventory</a>)</td>
+          <td><span class="lightgray"><%= product.buyers.count %></span></td>
+          <td>
+            <% raises = product.num_raises %>
+            <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span></span> </td>
+          <td><a href="#top" class="btn default">Notify</a> <a href="#top" class="btn">Delete</a></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>

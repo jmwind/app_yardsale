@@ -17,32 +17,41 @@
 </script>
 
 <div class="section">
-    <div class="section-content">
-      <div class="section-row">
-        <div class="section-listing">
-          <div class="section-options">
-            <div class="section-filter">
-              <div>
-                <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by product"></div>
-              </div>
-            </div>
-            <div class="section-content">
-              <div class="section-row">
-                <table class="table-section">
-                  <thead>
-                    <tr>
-                      <th class="sortable">Name</th>
-                      <th class="sortable">E-mail</th>
-                      <th class="sortable">Raise</th>
-                    </tr>
-                  </thead>
-                  <tbody>                  
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+<div class="section-content">
+<div class="section-row">
+<div class="section-listing">
+<div class="section-options">
+  <div class="section-filter">
+    <div>
+      <div class="filter-freecell"><input class="input-search" type="text" placeholder="Filter by e-mail or name"></div>
     </div>
   </div>
+  <div class="section-content">
+    <div class="section-row">
+      <table class="table-section">
+        <thead>
+          <tr>
+            <th class="sortable">Name</th>
+            <th class="sortable">E-mail</th>
+            <th class="sortable">Raise</th>
+            <th class="sortable">Actions</th>
+          </tr>
+        </thead>
+        <tbody>  
+         <% @buyers.each do |buyer| %>
+         <tr>
+         <td><%= buyer.name %></td>
+         <td><%= buyer.email %></td>
+         <td><%= buyer.raise %></td>
+         <td><a href="#top" class="btn default">Accept</a> <a href="#top" class="btn">Clear</a> <a href="#top" class="btn">Delete</a></td>
+         </tr>
+         <% end %>                 
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
