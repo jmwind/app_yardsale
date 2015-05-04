@@ -9,7 +9,7 @@ EmbededApp::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
-  config.serve_static_assets = false
+  config.serve_static_files = false
 
   # Compress JavaScripts and CSS
   config.assets.compress = true
@@ -28,7 +28,7 @@ EmbededApp::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -38,6 +38,7 @@ EmbededApp::Application.configure do
 
   # Use a different logger for distributed setups
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
+  config.log_formatter = ::Logger::Formatter.new
 
   # Use a different cache store in production
   # config.cache_store = :mem_cache_store
@@ -63,6 +64,9 @@ EmbededApp::Application.configure do
 
   # Active Record eager loading
   config.eager_load = true
+  
+  # Do not dump schema after migrations
+  config.active_record.dump_schema_after_migration = false
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
