@@ -15,6 +15,8 @@ List of things that are f#$%@
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
 - add the liquid snippet checker to admin
 - instead of "on sale" make "great deal, almost new" (edit template and add to instructions on how to run a yard sale)
+- work out asset paths and heroku (for now, have to re-install app each time yard_sale.js changes so that script tag reference is updated)
+  - https://bibwild.wordpress.com/2014/10/02/non-digested-asset-names-in-rails-4-your-options/
 
 in-progress
 
