@@ -62,6 +62,8 @@ module EmbededApp
       app_url            = ENV["AYS_APP_URL"]
       Settings.host      = app_url
       Settings.webhook_url = ENV["AYS_WEBHOOK_URL"] || app_url
-    end
+      ShopifyApp.configuration.api_key = ENV["SHOPIFY_APP_API_KEY"]
+      ShopifyApp.configuration.secret = ENV["SHOPIFY_APP_SECRET"]  
+    end    
   end
 end
