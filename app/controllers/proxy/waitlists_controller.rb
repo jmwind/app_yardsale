@@ -24,7 +24,7 @@ class Proxy::WaitlistsController < RemoteAreaController
     @buyer.email = params["email"]
     @buyer.raise = params["raise"]
     if @buyer.save!
-      WaitlistMailer.buyer_added(@shop, @product, @buyer).deliver_now
+      NotificationMailer.buyer_added(@shop, @product, @buyer).deliver_now
       respond_to do |format|
           format.html { render :nothing => true }
           format.js
