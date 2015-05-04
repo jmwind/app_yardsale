@@ -23,10 +23,12 @@ class Proxy::WaitlistsController < RemoteAreaController
     @buyer.name = params["name"]
     @buyer.email = params["email"]
     @buyer.raise = params["raise"]
-    @buyer.save!
-    respond_to do |format|
-        format.html { render :nothing => true }
-        format.js
+    if @buyer.save!
+      WaitlistMailer.buyer_added(@shop, @product, @buyer).deliver_now
+      respond_to do |format|
+          format.html { render :nothing => true }
+          format.js
+      end
     end    
   end
 
