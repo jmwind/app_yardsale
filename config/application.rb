@@ -62,7 +62,6 @@ module EmbededApp
       app_url            = ENV["AYS_APP_URL"]
       Settings.host      = app_url
       Settings.webhook_url = ENV["AYS_WEBHOOK_URL"] || app_url
-      config.logger.debug "Using app_url: #{app_url}"
     end
   end
 end
