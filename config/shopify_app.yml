@@ -1,0 +1,6 @@
+development:
+  api_key: <%= ENV['AYS_API_KEY'] %>
+  secret: <%= ENV['AYS_API_SECRET'] %>
+production:
+  api_key: <%= ENV['AYS_API_KEY'] %>
+  secret: <%= ENV['AYS_API_SECRET'] %>�
