@@ -18,7 +18,7 @@ List of things that are f#$%@
 
 in-progress
 
-- get running on heroku with monitoring and mail
+~ get running on heroku with monitoring and mail
 - send store admin an e-mail when someone gets added to the waiting list
 - add stats to first page: total $ in inventory, # sold, # reserved, #available
 - use link_to everywhere and proper parameter sending
