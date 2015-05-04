@@ -1,7 +1,7 @@
 module ScriptTag
 
   def self.src
-    "#{Settings.host}" + "#{ActionController::Base.helpers.asset_path('yard_sale.js')}"
+    "#{Settings.host}" + "/assets/yard_sale.js"
   end
 
   def self.find_or_create
