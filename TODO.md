@@ -19,7 +19,7 @@ List of things that are f#$%@
 
 in-progress
 
-- send store admin an e-mail when someone gets added to the waiting list
+- send store admin an e-mail when someone gets added to the waiting list (add product names to cache or emails are bogus. Add link to waitinglist from mail)
 - use link_to everywhere and proper parameter sending
 
 
