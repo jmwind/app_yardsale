@@ -5,8 +5,6 @@ module Settings
   mattr_accessor :google_analytics_code
   self.google_analytics_code = "XXX"
 
-  mattr_accessor :host
-
   mattr_accessor :webhook_url
   mattr_accessor :port
   mattr_accessor :email
@@ -18,4 +16,14 @@ module Settings
   mattr_accessor :admin_email
   self.admin_email = "official-apps@shopify.com"
 
+  def self.host
+    if @host.blank?
+      @host = ENV["AYS_APP_URL"]
+    end
+    @host
+  end
+  
+  def self.host=(new_host)
+    @host = new_host
+  end
 end

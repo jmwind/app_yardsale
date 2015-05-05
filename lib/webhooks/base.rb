@@ -4,11 +4,14 @@ class Webhooks::Base
     if hook
       hook
     else
+      puts "INSTALL WEBHOOK ==> #{Settings.webhook_url}/webhooks/#{topic}"
+      
       webhook = ShopifyAPI::Webhook.create(
           :topic   => topic,
           :format  => 'json',
           :address => "#{Settings.webhook_url}/webhooks/#{topic}")
 
+      puts "WEBHOOK ==> #{webhook}"
       raise ActiveResource::ResourceInvalid, "#{webhook.errors.full_messages.inspect}" if webhook.new?
       webhook
     end

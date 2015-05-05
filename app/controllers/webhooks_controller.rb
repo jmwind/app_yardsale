@@ -5,11 +5,15 @@ class WebhooksController < ApplicationController
   before_filter :verify_webhook
 
   def uninstalled
-    if shop = Shop.where(url: params[:myshopify_domain])
+    if shop = Shop.where(url: params[:domain]).first
       cancel_shop(shop)
     end
     head(:ok)
   end
+    
+ def products
+    head(:ok)
+ end
 
   private
 
@@ -17,12 +21,14 @@ class WebhooksController < ApplicationController
     session = ShopifyAPI::Session.new(shop.url, shop.oauth_token)
     ShopifyAPI::Base.activate_session(session)
     shop.cancel
+    shop.destroy
   rescue => e
   ensure
     ShopifyAPI::Base.clear_session
   end
 
   def verify_webhook
+    puts "WEBHOOK RECEIVED ==> #{request.original_url}"
     request.body.rewind
     @request_data = request.body.read
     digest  = OpenSSL::Digest.new('sha256')

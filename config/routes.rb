@@ -28,4 +28,7 @@ EmbededApp::Application.routes.draw do
 
   # webhook app/uninstall
   match '/webhooks/app/uninstalled' => 'webhooks#uninstalled', :via => :post
+  match '/webhooks/products/update' => 'webhooks#products', :via => :post
+  match '/webhooks/products/create' => 'webhooks#products', :via => :post
+  match '/webhooks/products/delete' => 'webhooks#products', :via => :post
 end

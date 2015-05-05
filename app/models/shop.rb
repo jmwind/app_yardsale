@@ -57,7 +57,7 @@ class Shop < ActiveRecord::Base
         end
       end
 
-      #shop.install_webhooks
+      shop.install_webhooks
       shop.install_script_tags
     else
       shop.first_install = false
