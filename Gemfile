@@ -6,6 +6,7 @@ gem "shopify_app",              '~> 5.0.2'
 gem 'underscore-rails',         '1.8.2'
 gem 'jquery-rails',             '4.0.3'
 gem 'turbolinks',               '2.3.0'
+gem "bugsnag"
 gem "quiet_assets"
 
 group :assets do
