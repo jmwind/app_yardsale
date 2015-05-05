@@ -8,6 +8,16 @@ This is what it used to feel like when selling on-line:
 
 ![old school](doc/yardsale_iphone_chat.png)
 
+Instead, when a product is reserved buyers can add themselves to a waitlist or propose a new price.
+
+![old school](doc/yardsale_reserved.png)
+
+As a merchant, you can manage the waitlists by product. See who's raise, and automatically send mails and manage the demand all in one place.
+
+![old school](doc/yardsale_products_admin.png) 
+
+![old school](doc/yardsale_buyers_admin.png)
+
 # Main Features
 
 * Allows buyers to reserve a product, and pay via COD.
