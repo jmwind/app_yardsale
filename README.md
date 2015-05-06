@@ -4,15 +4,15 @@ The yard sale app allows you to sell personal online items without having to dea
 
 Gone are the days of listing an item and getting dozen of text messages from potential buyers. Having to track who contacted you first and who wanted to pay more. Let Shopify handle the logistics, while you collect the money.
 
-This is what it used to feel like when selling on-line:
+This is what it used to feel like when selling on-line. You'd spent your week in SMS exchanges with potential buyers. Now multiply that by N items that you're selling and it's a nightmare, to the point that it's not even worth your while.
 
 ![old school](doc/yardsale_iphone_chat.png)
 
-Instead, when a product is reserved buyers can add themselves to a waitlist or propose a new price.
+In the new work and with the combination Shopify and YardSale, instead os those pesky SMS exchanges, when a product is reserved your buyers can add themselves to a waitlist or propose a new price for each product.
 
 ![old school](doc/yardsale_reserved.png)
 
-As a merchant, you can manage the waitlists by product. See who's raise, and automatically send mails and manage the demand all in one place.
+As a merchant, you can manage the waitlists by product. See who's raised, and automatically send mails or accept the bid. It will create a new order and let everyone know what happened.
 
 ![old school](doc/yardsale_products_admin.png) 
 
@@ -53,11 +53,7 @@ Register as a Shopify partner and [create a dev shop](https://docs.shopify.com/t
 
 ![create app](doc/app_create_partners.png)
 
-After the app's been created, remember the api and secret keys and install in your `shopify_app.xml`.
-
-```
-cp config/shopify_app.yml.example config/shopify_app.yml
-```
+After the app's been created, find the api key and secret and use to configure your local and heroku environment variables SHOPIFY_APP_API_KEY and SHOPIFY_APP_SECRET.
 
 ![create app](doc/app_edit_partners.png)
 
@@ -97,6 +93,20 @@ During the installation process you should see handshake log messages from your 
 
 ![install page](doc/app_post_install.png)
 
+# Store customizations
+
+Add the waitlist placeholder to your product.liquid file. 
+
+```
+<div class="yardsale-product" data-id="{{product.id}}"></div>
+```	  
+
+Edit the language settings of your template:
+
+- Where it mentions `Sold Out`, replace with `Reserved`
+- Configure check out wording such that it doesn't sound as store like
+  - `Shipping Details` with `Contact Details`
+  - Remove the Shipping and Tax fields following [these instructions](https://docs.shopify.com/manual/configuration/store-customization/page-specific/checkout-page/customization-walkthroughs/hide-tax-line).
 
 # Wish List
 
