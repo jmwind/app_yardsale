@@ -8,6 +8,8 @@ gem 'jquery-rails',             '4.0.3'
 gem 'turbolinks',               '2.3.0'
 gem "bugsnag"
 gem "quiet_assets"
+gem 'groupdate'
+gem 'chartkick'
 
 group :assets do
   gem "sass-rails"

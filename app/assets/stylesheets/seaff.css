@@ -40,6 +40,20 @@ table {
   border-spacing: 0;
 }
 
+h2 {
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #31373d;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.2em;
+}
+
+h3 {
+  font-size: 13px;
+}
+
 th {
   display: table-row;
   vertical-align: inherit;
@@ -115,6 +129,24 @@ form {
   border-radius: 10px;
   padding: 2px 2px 2px 12px;
   margin: 10px;
+}
+
+.stat-green {
+  color: #96bf48;
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 30px;
+}
+
+.stat-description {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  color: #95a7b7;
 }
 
 /****************************************** 

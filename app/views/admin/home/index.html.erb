@@ -1,18 +1,32 @@
 <%= render "/common/top_bar" %>
 <div class="section">
 <div class="section-content">
-<div class="section-row">
-<div class="section-listing">
-<div class="section-options">
-  <div class="section-filter">
-    <h1> $ <%= @total_inventory %> in total inventory</h1>
-    <div>
-      <div class="filter-freecell"><input class="input-search" onkeyup="filter2(this, '.table-section', 1);" type="text" placeholder="Filter by product"></div>
+  
+  <div class="section-row">
+    <div class="section-cell">
+      <h2>Inventory</h2>
+      <span class="stat-green">$<%= @total_inventory %></span>
+      <p class="stat-description">45 Total Products</p>
+    </div>
+    <div class="section-cell">
+      <h2>Reservations</h2>
+      <span class="stat-green">3/45</span>
+      <p class="stat-description">12 buyers on waiting lists</p>
+    </div>
+    <div class="section-cell">
+      <h2>Waitlist Activity</h2>
+      <%= column_chart(Buyer.group(:created_at).count, colors: ["#C0D891"], height: "75px") %>
     </div>
   </div>
-  <div class="section-content">
-    <div class="section-row">
-      <table class="table-section">
+
+  <div class="section-row">
+    <div class="section-cell">
+    <div class="section-filter">    
+      <div>
+        <div class="filter-freecell"><input class="input-search" onkeyup="filter2(this, '.table-section', 1);" type="text" placeholder="Filter by product"></div>
+      </div>
+    </div>
+    <table class="table-section">
         <thead>
           <tr>
             <th class="sortable">Product</th>
@@ -38,11 +52,8 @@
             </tr>
           <% end %>
         </tbody>
-      </table>
+    </table>
     </div>
   </div>
-</div>
-</div>
-</div>
 </div>
 </div>

@@ -1,18 +1,20 @@
 # Shopify Yard Sale App
 
-The yard sale app allows you to sell personal online items without having to deal with the frustrating logistical hassles of Craigslist style marketplaces. Whether you’re selling in Australia on Gumtree or in France on LeBonCoin, use them as a marketing channel not a commerce platform.
+The yard sale app augments a Shopify store to make it easier to sell personal items online without having to deal with the frustrating logistical hassles of Craigslist style marketplaces. Whether you’re selling in Australia on Gumtree or in France on LeBonCoin, use those services as marketing channels but not as a commerce platform. 
 
 Gone are the days of listing an item and getting dozen of text messages from potential buyers. Having to track who contacted you first and who wanted to pay more. Let Shopify handle the logistics, while you collect the money.
 
-This is what it used to feel like when selling on-line. You'd spent your week in SMS exchanges with potential buyers. Now multiply that by N items that you're selling and it's a nightmare, to the point that it's not even worth your while.
+Below is what it typically feels like when selling items on-line on a Craigslist site. You'll spend your week in SMS exchanges with potential buyers. Now multiply that by N items that you're selling and it's a nightmare, to the point that it's not even worth your while.
 
 ![old school](doc/yardsale_iphone_chat.png)
 
-In the new work and with the combination Shopify and YardSale, instead os those pesky SMS exchanges, when a product is reserved your buyers can add themselves to a waitlist or propose a new price for each product.
+In a more modern setup with Shopify and Yardsale the pesky SMS exchanges are replaced with a workflow around reserved items. The simplest improvement over a marketplace is that reserving something is automated, transparent, and doesn't stop the process with other buyers.
+
+Buyers can add themselves to a waitlist or propose a new price for each item that's reserved. Which means that the communication is a lot more transparent.
 
 ![old school](doc/yardsale_reserved.png)
 
-As a merchant, you can manage the waitlists by product. See who's raised, and automatically send mails or accept the bid. It will create a new order and let everyone know what happened.
+As a merchant, you can manage the waitlists by product. See who's raised, and automatically send mails or accept the bid. An existing order will be cancelled and a new one created and appropriate notifications sent out.
 
 ![old school](doc/yardsale_products_admin.png) 
 
