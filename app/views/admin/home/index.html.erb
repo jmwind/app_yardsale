@@ -5,7 +5,7 @@
   <div class="section-row">
     <div class="section-cell">
       <h2>Inventory</h2>
-      <span class="stat-green">$<%= @total_inventory %></span>
+      <span class="stat-green"><%= number_to_currency(@total_inventory) %></span>
       <p class="stat-description">45 Total Products</p>
     </div>
     <div class="section-cell">
