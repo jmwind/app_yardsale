@@ -1,5 +1,6 @@
 window.alertModal = function(){
   ShopifyApp.Modal.alert('Message for an alert window.');
+  return false;
 }
 
 function filter2 (phrase, _id) {

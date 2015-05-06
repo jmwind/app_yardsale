@@ -8,7 +8,6 @@ List of things that are f#$%@
 - spam handling
 - A/B test a pop-up instead of an inline form
 - logic around raise restrictions by e-mail
-- warning messages on destroy actions, have to add another listener and intercept linke_to action
 - sortable columns
 - ajax add/remove from tables on all actions
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
@@ -18,9 +17,8 @@ List of things that are f#$%@
 
 in-progress
 
-
+- warning messages on destroy actions to use shopify native dialogs, have to add another listener and intercept linke_to action
 - use link_to everywhere and proper parameter sending
-
 
 done
 
