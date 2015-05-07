@@ -14,6 +14,7 @@ List of things that are f#$%@
 - add the liquid snippet checker to admin
 - use a job to collect stats and cache in the app. Include timestamp and ability to refresh with webhooks changes
 - why is yard_sale.js being loaded into the admin? Move or remove from the asset pipeline?
+- webhooks authentication and finding the right shop based on the session
 
 in-progress
 

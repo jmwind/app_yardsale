@@ -5,6 +5,7 @@ class Shop < ActiveRecord::Base
 
   cattr_accessor :current
   attr_accessor :first_install
+  attr_accessor :gross_inventory, :total_products
 
   has_many :products, dependent: :destroy
 
@@ -79,6 +80,30 @@ class Shop < ActiveRecord::Base
 
   def cancelled?
     self.status == "cancelled"
+  end
+  
+  def total_buyers
+    count = 0;
+    products.each { | p | count += p.buyers.count }
+    count
+  end
+  
+  def total_raises
+    count = 0;
+    products.each { | p | count += p.num_raises }
+    count
+  end
+  
+  def update_stats
+    self.gross_inventory = 0.00
+    products = ShopifyAPI::Product.all
+    products.each do | product |
+      variants = product.attributes[:variants]
+      variants.each do | variant |
+        self.gross_inventory +=  variant.attributes[:price].to_d
+      end
+    end
+    self.total_products = products.length
   end
 
 end

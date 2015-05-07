@@ -12,6 +12,10 @@ class WebhooksController < ApplicationController
   end
     
  def products
+    # XXX: hack, find the right store from session?
+    product = @product = Shop.first.products.where(remote_id: params[:id]).first
+    product.update_attribute(:title, params[:title]) if product
+    puts "WEBHOOK DATA ==> #{params[:id]} => #{params[:title]}"
     head(:ok)
  end
 
@@ -29,6 +33,7 @@ class WebhooksController < ApplicationController
 
   def verify_webhook
     puts "WEBHOOK RECEIVED ==> #{request.original_url}"
+    puts "WEBHOOK SESSION ==> #{ShopifyAPI::Session.secret}"
     request.body.rewind
     @request_data = request.body.read
     digest  = OpenSSL::Digest.new('sha256')

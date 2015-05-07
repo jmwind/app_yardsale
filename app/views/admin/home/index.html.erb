@@ -5,17 +5,21 @@
   <div class="section-row">
     <div class="section-cell">
       <h2>Inventory</h2>
-      <span class="stat-green"><%= number_to_currency(@total_inventory) %></span>
-      <p class="stat-description">45 Total Products</p>
+      <span class="stat-green"><%= number_to_currency(@shop.gross_inventory) %></span>
+      <p class="stat-description"><%= @shop.total_products %> Total Products</p>
     </div>
     <div class="section-cell">
-      <h2>Reservations</h2>
-      <span class="stat-green">3/45</span>
-      <p class="stat-description">12 buyers on waiting lists</p>
+      <h2>Waitlists</h2>
+      <span class="stat-green"><%= @shop.total_buyers %> Buyers</span>
+      <p class="stat-description"><%= @shop.total_raises %> outstanding raises</p>
     </div>
     <div class="section-cell">
       <h2>Waitlist Activity</h2>
-      <%= column_chart(Buyer.group(:created_at).count, colors: ["#C0D891"], height: "75px") %>
+      <%= column_chart(Buyer.group(:created_at).count, colors: ["#C0D891"], height: "75px", xAxis: {
+            type: 'datetime',
+            dateTimeLabelFormats: {
+                day: '%e of %b'
+            }}) %>
     </div>
   </div>
 
@@ -39,7 +43,7 @@
           <br/>
           <% @product_buyers.each do |product| %>            
             <% id = product.remote_id %>
-            <% title = @product_map[id] %>
+            <% title = product.title %>
             <tr>
             <td>
               <a href="buyers?product_id=<%= id %>&title=<%= title %>"><%= title %></a> 

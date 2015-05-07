@@ -1,4 +1,9 @@
-<h1>Buyer Added</h1>
+<h3>Buyer Added</h3>
 <p>
-<%= @buyer.name %> (<%= @buyer.email %>) has been added to the waiting for Product Foo.
-</p>  
+<%= @buyer.name %> (<%= @buyer.email %>) has been added to the waiting for <%= @product.title %>.
+</p>
+<% if @buyer.raise > 0 %>
+<p>
+They have raised the price to <%= number_to_currency(@buyer.raise) %>
+</p>
+<% end %>

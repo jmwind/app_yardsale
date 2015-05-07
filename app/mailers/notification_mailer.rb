@@ -9,7 +9,7 @@ class NotificationMailer < ApplicationMailer
     @shop = shop
     @product = product
     @buyer = buyer
-    mail to: shop.email, subject: "[#{shop.name}] Buyer added to waitlist"
+    mail to: shop.email, subject: "[#{shop.name}] Waitlist added for #{product.title}"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
