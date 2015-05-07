@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506232729) do
+ActiveRecord::Schema.define(version: 20150507031016) do
 
   create_table "buyers", force: :cascade do |t|
     t.string   "name"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150506232729) do
     t.integer  "product_id"
   end
 
-  add_index "buyers", ["email"], name: "index_buyers_on_email", unique: true
+  add_index "buyers", ["product_id", "email"], name: "index_buyers_on_product_id_and_email", unique: true
 
   create_table "products", force: :cascade do |t|
     t.string   "remote_id"

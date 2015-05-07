@@ -1,7 +1,5 @@
 require 'test_helper'
 
 class BuyerTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  # test no unique buyer per product but you can have the same buyers across products
 end

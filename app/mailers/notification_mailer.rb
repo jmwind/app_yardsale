@@ -33,4 +33,16 @@ class NotificationMailer < ApplicationMailer
 
     mail to: "to@example.org"
   end
+  
+   # Subject can be set in your I18n file at config/locales/en.yml
+  # with the following lookup:
+  #
+  #   en.waitlist_mailer.product_sold.subject
+  #
+  def buyer_waitlisted(shop, product, buyer)
+  @shop = shop
+    @product = product
+    @buyer = buyer
+    mail to: buyer.email, subject: "[#{shop.name}] You're in line for #{product.title}"  
+  end
 end

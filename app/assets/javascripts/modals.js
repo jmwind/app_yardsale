@@ -1,7 +1,21 @@
-window.alertModal = function(){
-  ShopifyApp.Modal.alert('Message for an alert window.');
-  return false;
+
+(function() {
+  $(document).ready(function() {
+    $(".notify-product-update").on("click", notifyBuyers);
+  });
+})();
+
+window.notifyBuyers = function() {
+  ShopifyApp.Modal.input("Message for buyers:", function(result, data){
+    if(result){
+      ShopifyApp.flashNotice("Received: \"" + data + "\"");
+    }
+    else {
+      ShopifyApp.flashNotice("No e-mails sent.");
+    }
+  });  
 }
+
 
 function filter2 (phrase, _id) {
 	var words = phrase.value.toLowerCase().split(" ");
@@ -22,8 +36,13 @@ function filter2 (phrase, _id) {
 	}
 }
 
-window.confirmModal = function () {
 
+window.alertModal = function(){
+  ShopifyApp.Modal.alert('Message for an alert window.');
+  return false;
+}
+
+window.confirmModal = function () {
   ShopifyApp.Modal.confirm({
     title: "Are you sure you want to delete this?",
     message: "Do you want to delete your account? This can't be undone.",
