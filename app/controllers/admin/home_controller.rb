@@ -13,8 +13,5 @@ class Admin::HomeController < AdminAreaController
   
   def help
   end
-  
-  def send
-  end
-  
+    
 end
