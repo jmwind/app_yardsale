@@ -8,7 +8,10 @@ class Admin::HomeController < AdminAreaController
   def destroy
     @product = @shop.products.where(remote_id: params[:product_id]).first
     @product.destroy if @product
-    redirect_to "/"
+    respond_to do |format|
+      format.html { redirect_to "/" }
+      format.js
+    end
   end
   
   def help

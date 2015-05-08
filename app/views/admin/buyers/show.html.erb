@@ -63,7 +63,7 @@
          <tr>
          <td><%= buyer.name %></td>
          <td><%= buyer.email %></td>
-         <td><%= buyer.raise %></td>
+         <td><span class="tag <%= buyer.raise == 0 ? "lightgray" : "orange" %>"><%= number_to_currency(buyer.raise) %></span></td>
          <td>
            <a href="#top" class="btn default">Accept</a> 
            

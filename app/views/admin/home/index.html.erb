@@ -6,11 +6,11 @@
     <div class="section-cell">
       <h2>Inventory</h2>
       <span class="stat-green"><%= number_to_currency(@shop.gross_inventory) %></span>
-      <p class="stat-description"><%= @shop.total_products %> Total Products</p>
+      <p class="stat-description"><%= @shop.total_products %> total products</p>
     </div>
     <div class="section-cell">
       <h2>Waitlists</h2>
-      <span class="stat-green"><%= @shop.total_buyers %> Buyers</span>
+      <span class="stat-green total-buyers"><%= @shop.total_buyers %> Buyers</span>
       <p class="stat-description"><%= @shop.total_raises %> outstanding raises</p>
     </div>
     <div class="section-cell">
@@ -44,17 +44,17 @@
           <% @product_buyers.each do |product| %>            
             <% id = product.remote_id %>
             <% title = product.title %>
-            <tr>
+            <tr id="<%= id %>">
             <td>
               <a href="buyers?product_id=<%= id %>&title=<%= title %>"><%= title %></a> 
               (<a href="#" onclick="ShopifyApp.redirect('/products/<%= id %>}')">inventory</a>)</td>
             <td><span class="lightgray"><%= product.buyers.count %></span></td>
             <td>
               <% raises = product.num_raises %>
-              <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span></span> </td>
+              <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span> </td>
             <td>
               <a href="#top" class="btn default no-loading notify-product-update">Notify</a> 
-              <%= link_to("Delete", "product?product_id=#{id}", method: :delete, class: "btn no-loading", data: { confirm: "Are you sure?" }) %></td>
+              <%= link_to("Delete", "product?product_id=#{id}", remote: true, method: :delete, class: "btn no-loading", data: { confirm: "Are you sure?" }) %></td>
             </tr>
           <% end %>
         </tbody>
