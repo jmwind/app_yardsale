@@ -3,16 +3,14 @@ List of things that are f#$%@
 - had to comment out forgery filter in ApplicationController that is bogus
   - check out <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
 - waitlist_controller::create should be able to update new buyers instead of setting each parameter
-- javascript clean-up instead of updating dom, get fragment from the server as ajax
 - form validation in the waitlist form could be a lot better
 - spam handling
-- A/B test a pop-up instead of an inline form
 - logic around raise restrictions by e-mail
 - sortable columns
 - ajax add/remove from tables on all actions
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
 - add the liquid snippet checker to admin
-
+- keep waiting lists instead of destroying. The e-mails may be useful for future marketing.
 - why is yard_sale.js being loaded into the admin? Move or remove from the asset pipeline?
 - webhooks authentication and finding the right shop based on the session
 

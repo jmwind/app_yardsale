@@ -6,7 +6,7 @@
 })();
 
 window.notifyBuyers = function() {
-  ShopifyApp.Modal.input("Message for buyers:", function(result, data){
+  ShopifyApp.Modal.input("E-mail message for buyers:", function(result, data) {
     if(result){
       ShopifyApp.flashNotice("Received: \"" + data + "\"");
     }

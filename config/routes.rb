@@ -9,8 +9,10 @@ EmbededApp::Application.routes.draw do
   # Admin
   #
   scope module: 'admin' do
-    get 'help' => 'home#help'
+    get 'product' => 'home#index'
     delete 'product' => 'home#destroy'
+    get 'help' => 'home#help'
+    post 'send' => 'home#send'    
     root :to => 'home#index'  
     resource :buyers do
       post :clear, on: :member

@@ -1,7 +1,12 @@
 <% if product_available < 1 %>
 <div class="waitlist_section" id="waitlist_section">
   <br/>  
-    <p><strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>Go ahead and <a class="wl_form_toggle" href="#">join the waiting list</a> and you'll be notified when the items back on the market.</p>
+    <p>
+       <strong>WAIT, DON'T GO!!</strong> This item has been reserved, but not payed for yet.<br/>       
+       Jump onto the waitling list and you'll be notified if the item is not sold.       
+       <br/><br/>       
+       <a class="wl_form_toggle" href="#">Join the waiting list</a>       
+    </p>
     <div class="waitlist_form" style="display: none">
       <p>There are <%= pluralize(@product.buyers.count, "people") %> on the waiting list.</p>
 
