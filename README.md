@@ -109,6 +109,9 @@ Edit the language settings of your template:
 - Configure check out wording such that it doesn't sound as store like
   - `Shipping Details` with `Contact Details`
   - Remove the Shipping and Tax fields following [these instructions](https://docs.shopify.com/manual/configuration/store-customization/page-specific/checkout-page/customization-walkthroughs/hide-tax-line).
+- Update order e-mails
+  - Remove Shipping address and rename Billing to Contact details
+  - Include wording about how to cordinate the pick up of the item
 
 # Wish List
 
