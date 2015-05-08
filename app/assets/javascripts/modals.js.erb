@@ -17,18 +17,17 @@
     //Display the confirmation dialog
     $.rails.showConfirmationDialog = function(link){
       var message = link.data("confirm");
+      var title = link.data("title");
       ShopifyApp.Modal.confirm({
-        title: "Are you sure you want to delete this?",
-        message: "Do you want to delete your account? This can't be undone.",
-        okButton: "Yes, delete it",
-        cancelButton: "No, keep it",
+        title: title,
+        message: message,
+        okButton: "Ok",
+        cancelButton: "Cancel",
         style: 'danger'
       }, function(result){
         if (result) {
           $.rails.confirmed(link);
-          ShopifyApp.flashNotice("Delete has been confirmed.")
-        } else {
-          ShopifyApp.flashNotice("Delete has been cancelled.")
+          ShopifyApp.flashNotice("Success!");
         }
       });
     }        

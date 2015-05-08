@@ -54,7 +54,7 @@
               <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span> </td>
             <td>
               <a href="#top" class="btn default no-loading notify-product-update">Notify</a> 
-              <%= link_to("Delete", "product?product_id=#{id}", remote: true, method: :delete, class: "btn no-loading", data: { confirm: "Are you sure?" }) %></td>
+              <%= link_to("Delete", "product?product_id=#{id}", remote: true, method: :delete, class: "btn no-loading", data: { confirm: "Do you want to delete this waiting list? This can't be undone.", title: "Confirm Delete" }) %></td>
             </tr>
           <% end %>
         </tbody>
