@@ -1,5 +1,8 @@
 var element = $("#<%= @product.remote_id %>");
-var totalBuyersElm = $(".total-buyers")
+var totalBuyersElm = $(".total-buyers");
+var totalRaisesElm = $(".total-raises");
 var totalBuyers = "<%= @shop.total_buyers %> Buyers";
+var totalRaises = "<%= @shop.total_raises %> total raises";
 element.hide('slow');
 totalBuyersElm.text(totalBuyers);
+totalRaisesElm.text(totalRaises);

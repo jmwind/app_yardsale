@@ -7,7 +7,7 @@ List of things that are f#$%@
 - spam handling
 - logic around raise restrictions by e-mail
 - sortable columns
-- ajax add/remove from tables on all actions
+- use of fragments to re-use view code between html and js 
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
 - add the liquid snippet checker to admin
 - keep waiting lists instead of destroying. The e-mails may be useful for future marketing.
@@ -16,11 +16,12 @@ List of things that are f#$%@
 
 in-progress
 
-- warning messages on destroy actions to use shopify native dialogs, have to add another listener and intercept linke_to action
+- ajax add/remove from tables on all actions
 - use link_to everywhere and proper parameter sending
 
 done
 
+x warning messages on destroy actions to use shopify native dialogs, have to add another listener and intercept linke_to action
 x send store admin an e-mail when someone gets added to the waiting list (add product names to cache or emails are bogus. Add link to waitinglist from mail)
 x use a job to collect stats and cache in the app. Include timestamp and ability to refresh with webhooks changes
 x instead of "on sale" make "great deal, almost new" (edit template and add to instructions on how to run a yard sale)
