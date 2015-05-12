@@ -2,9 +2,11 @@ class Admin::HomeController < AdminAreaController
 
   def index
     @shop.update_stats
+    # It's possible to have products stored without current buyers on the waiting list.
+    # so return only those products that have buyers.
     @product_buyers = @shop.products.includes(:buyers).where.not(:buyers => { :product_id => nil })
   end
- 
+
   def destroy
     @product = @shop.products.where(remote_id: params[:product_id]).first
     @product.destroy if @product
@@ -13,8 +15,8 @@ class Admin::HomeController < AdminAreaController
       format.js
     end
   end
-  
+
   def help
   end
-    
+
 end

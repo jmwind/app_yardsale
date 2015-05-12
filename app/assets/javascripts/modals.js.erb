@@ -1,7 +1,9 @@
 
 (function() {
-  $(document).ready(function() {    
-    //Override the default confirm dialog by rails
+  $(document).ready(function() {
+    //Override the default confirm dialog by rails and
+    //use the Shopify dialogs instead. This allows using
+    //the rail helpers.
     $.rails.allowAction = function(link){
       if (link.data("confirm") == undefined){
         return true;
@@ -30,10 +32,12 @@
           ShopifyApp.flashNotice("Success!");
         }
       });
-    }        
+    }
   });
 })();
 
+// Filter tables. Only works when not paginated as it won't hit the
+// server for additional data. Good for our use case.
 function filter2 (phrase, _id) {
 	var words = phrase.value.toLowerCase().split(" ");
 	var table = $(_id);

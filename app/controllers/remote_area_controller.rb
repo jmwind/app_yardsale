@@ -1,3 +1,7 @@
+#
+# Base controller for proxy and apis. Not used for admin
+# apis.
+#
 class RemoteAreaController < ApplicationController
   layout nil
 

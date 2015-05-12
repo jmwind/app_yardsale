@@ -4,12 +4,12 @@ class AdminAreaController < ApplicationController
 	before_filter :load_shop
 
 	def configure_view_path
-      prepend_view_path "app/views/admin"
-  	end
-	  
+		prepend_view_path "app/views/admin"
+  end
+
 	def load_shop
 	  current_shop = ShopifyAPI::Shop.current
-	  @shop = Shop.where(:url => current_shop.attributes[:domain]).first	
+	  @shop = Shop.where(:url => current_shop.attributes[:domain]).first
 	  raise ShopMissingError unless @shop
 	end
 end

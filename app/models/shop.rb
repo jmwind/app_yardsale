@@ -81,19 +81,19 @@ class Shop < ActiveRecord::Base
   def cancelled?
     self.status == "cancelled"
   end
-  
+
   def total_buyers
     count = 0;
     products.each { | p | count += p.buyers.count }
     count
   end
-  
+
   def total_raises
     count = 0;
     products.each { | p | count += p.num_raises }
     count
   end
-  
+
   def update_stats
     self.gross_inventory = 0.00
     products = ShopifyAPI::Product.all

@@ -7,13 +7,15 @@ List of things that are f#$%@
 - spam handling
 - logic around raise restrictions by e-mail
 - sortable columns
-- use of fragments/partials to re-use view code between html and js 
+- use of fragments/partials to re-use view code between html and js
   - https://slainer68.wordpress.com/2011/09/20/partial-reuse-between-rails-js-the-easy-way/
   - http://www.slideshare.net/JamesEdwardGrayII/drying-up-rails-views-and-controllers
 - when an item is actually fulfilled, send an e-mail so that those on the waiting list can come back and buy something else
 - add the liquid snippet checker to admin
+- when addon removed from a store, don't delete it. Mark as inactive and allow re-activation.
 - keep waiting lists instead of destroying. The e-mails may be useful for future marketing.
 - why is yard_sale.js being loaded into the admin? Move or remove from the asset pipeline?
+  - create a sub-folder, as everything at the root of assets is loaded by admin via application.js and           application.css
 - webhooks authentication and finding the right shop based on the session
 
 in-progress

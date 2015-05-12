@@ -10,10 +10,10 @@ class WebhooksController < ApplicationController
     end
     head(:ok)
   end
-    
+
  def products
     # XXX: hack, find the right store from session?
-    product = @product = Shop.first.products.where(remote_id: params[:id]).first
+    product = Shop.first.products.where(remote_id: params[:id]).first
     product.update_attribute(:title, params[:title]) if product
     puts "WEBHOOK DATA ==> #{params[:id]} => #{params[:title]}"
     head(:ok)
@@ -25,6 +25,8 @@ class WebhooksController < ApplicationController
     session = ShopifyAPI::Session.new(shop.url, shop.oauth_token)
     ShopifyAPI::Base.activate_session(session)
     shop.cancel
+
+    # XXX set as inactive and allow re-activating later
     shop.destroy
   rescue => e
   ensure

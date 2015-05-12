@@ -52,8 +52,11 @@ YS.validateForm = function() {
   $(document).ready(function() {
     var el = $(".yardsale-product");
     if( el && el.length > 0) {
+      // Attach event handlers to parent and children are loaded lazilly from
+      // the script tag.
       $(".yardsale-product").on("click", ".wl_form_toggle", YS.toggleForm);
       $(".yardsale-product").on("click", ".waitlist_submit", YS.submitForm);
+      // Load waiting list panel from server
       YS.productList();
     }
   });
