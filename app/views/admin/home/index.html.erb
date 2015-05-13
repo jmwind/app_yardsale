@@ -1,7 +1,7 @@
 <%= render "/common/top_bar" %>
 <div class="section">
 <div class="section-content">
-  
+
   <div class="section-row">
     <div class="section-cell">
       <h2>Inventory</h2>
@@ -25,7 +25,7 @@
 
   <div class="section-row">
     <div class="section-cell">
-    <div class="section-filter">    
+    <div class="section-filter">
       <div>
         <div class="filter-freecell"><input class="input-search" onkeyup="filter2(this, '.table-section', 1);" type="text" placeholder="Filter by product"></div>
       </div>
@@ -41,19 +41,19 @@
         </thead>
         <tbody>
           <br/>
-          <% @product_buyers.each do |product| %>            
+          <% @product_buyers.each do |product| %>
             <% id = product.remote_id %>
             <% title = product.title %>
             <tr id="<%= id %>">
             <td>
-              <a href="buyers?product_id=<%= id %>&title=<%= title %>"><%= title %></a> 
+              <a href="buyers?product_id=<%= id %>&title=<%= title %>"><%= title %></a>
               (<a href="#" onclick="ShopifyApp.redirect('/products/<%= id %>}')">inventory</a>)</td>
             <td><span class="lightgray"><%= product.buyers.count %></span></td>
             <td>
               <% raises = product.num_raises %>
               <span class="tag <%= raises == 0 ? "lightgray" : "orange" %>"><%= product.num_raises %></span> </td>
             <td>
-              <a href="#top" class="btn default no-loading notify-product-update">Notify</a> 
+              <a href="#top" class="btn default no-loading notify-product-update">Notify</a>
               <%= link_to("Delete", "product?product_id=#{id}", remote: true, method: :delete, class: "btn no-loading", data: { confirm: "Do you want to delete this waiting list? This can't be undone.", title: "Confirm Delete" }) %></td>
             </tr>
           <% end %>

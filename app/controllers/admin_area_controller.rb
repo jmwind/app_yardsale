@@ -3,6 +3,8 @@ class AdminAreaController < ApplicationController
 	before_filter :configure_view_path
 	before_filter :load_shop
 
+  protect_from_forgery
+
 	def configure_view_path
 		prepend_view_path "app/views/admin"
   end

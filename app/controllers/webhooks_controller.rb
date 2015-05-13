@@ -13,6 +13,7 @@ class WebhooksController < ApplicationController
 
  def products
     # XXX: hack, find the right store from session?
+    # use HTTP_X_SHOPIFY_SHOP_DOMAIN
     product = Shop.first.products.where(remote_id: params[:id]).first
     product.update_attribute(:title, params[:title]) if product
     puts "WEBHOOK DATA ==> #{params[:id]} => #{params[:title]}"
@@ -34,8 +35,6 @@ class WebhooksController < ApplicationController
   end
 
   def verify_webhook
-    puts "WEBHOOK RECEIVED ==> #{request.original_url}"
-    puts "WEBHOOK SESSION ==> #{ShopifyAPI::Session.secret}"
     request.body.rewind
     @request_data = request.body.read
     digest  = OpenSSL::Digest.new('sha256')
@@ -46,6 +45,7 @@ class WebhooksController < ApplicationController
     #    :error_class   => "WebhookError",
     #    :error_message => "WebhookError: invalid HTTP_X_SHOPIFY_HMAC_SHA256"
     #  )
+      # This will stop the request and the method won't be called
     #  head(:ok)
     #end
   end

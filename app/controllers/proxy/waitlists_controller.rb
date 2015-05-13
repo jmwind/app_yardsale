@@ -11,6 +11,7 @@ class Proxy::WaitlistsController < RemoteAreaController
                   :product => @product, :product_available => product_available})
     respond_to do |format|
       format.json { render :json => {:success => true, :html => @html}, :callback => @callback }
+      format.all  { head(:ok) }
     end
   end
 
@@ -18,7 +19,7 @@ class Proxy::WaitlistsController < RemoteAreaController
     # add validation that this buyer doesn't exist already and return proper error
     if @product.buyers.where(email: params["email"]).present?
       render :status => :conflict, :text => "This e-mail address is already in the waiting list." and return
-    end    
+    end
     @buyer = @product.buyers.build
     @buyer.name = params["name"]
     @buyer.email = params["email"]
@@ -27,9 +28,8 @@ class Proxy::WaitlistsController < RemoteAreaController
       send_mails(@shop, @product, @buyer)
       respond_to do |format|
           format.html { render :nothing => true }
-          format.js
       end
-    end    
+    end
   end
 
   def product
@@ -40,7 +40,7 @@ class Proxy::WaitlistsController < RemoteAreaController
   def remote_id_param
     params.permit(:product_id, :shop)[:product_id]
   end
-  
+
   def send_mails(shop, product, buyer)
     NotificationMailer.buyer_added(@shop, @product, @buyer).deliver_now
     NotificationMailer.buyer_waitlisted(@shop, @product, @buyer).deliver_now
