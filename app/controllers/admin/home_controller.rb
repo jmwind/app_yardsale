@@ -17,6 +17,7 @@ class Admin::HomeController < AdminAreaController
   end
 
   def help
+    # Show the static help view
   end
 
 end

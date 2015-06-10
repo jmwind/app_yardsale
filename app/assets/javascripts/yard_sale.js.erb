@@ -44,7 +44,15 @@ YS.submitForm = function(event) {
 };
 
 YS.validateForm = function() {
-    return true;
+  if(! $( "#waitlist_form_div" ).find("input[id=name]").val()) {
+    alert("Please enter a name");
+    return false;
+  }
+  if(! $( "#waitlist_form_div" ).find("input[id=email]").val()) {
+    alert("Please enter an email address");
+    return false;
+  }
+  return true;
 };
 
 (function() {

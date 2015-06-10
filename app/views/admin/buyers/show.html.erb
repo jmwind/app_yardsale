@@ -5,7 +5,7 @@
     ShopifyApp.Bar.initialize({
       title: window.mainPageTitle,
       icon: '/icon.png',
-      buttons: {       
+      buttons: {
         secondary: {
           label: "Back",
           href: "/",
@@ -22,7 +22,7 @@
       <div class="section-cell">
         <h1>Order Details</h1>
         <% if @order.nil? %>
-          <p>This product has no pending orders. Verify the stock before notifying the waiting list.</p> 
+          <p>This product has no pending orders. Verify the stock before notifying the waiting list.</p>
         <% else %>
           <p>Name: Jean-Michel Lemieux</br>
              Contact Details: 34 Asturias Ave</br>
@@ -34,7 +34,7 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
 
 <div class="section">
 <div class="section-content">
@@ -57,22 +57,29 @@
             <th class="sortable">Actions</th>
           </tr>
         </thead>
-        <tbody>  
+        <tbody>
          <% id = @product.remote_id %>
          <% @buyers.each do |buyer| %>
          <tr>
          <td><%= buyer.name %></td>
          <td><%= buyer.email %></td>
-         <td><span class="tag <%= buyer.raise == 0 ? "lightgray" : "orange" %>"><%= number_to_currency(buyer.raise) %></span></td>
          <td>
-           <a href="#top" class="btn default">Accept</a> 
-           
+           <% if buyer.raise? %>
+            <% raiseVal = number_to_currency(buyer.raise) %>
+           <% else %>
+             <% raiseVal = "none" %>
+           <% end %>
+           <span class="tag <%= buyer.raise? ? "orange" : "lightgray" %>"><%= raiseVal %></span>
+        </td>
+         <td>
+           <a href="#top" class="btn default">Accept</a>
+
            <%= link_to("Clear", clear_buyers_path(:product_id=> id, :email=> buyer.email), method: :post, class: "btn", data: { confirm: "Are you sure?" }) %>
-           
-           <%= link_to("Delete", "buyers?product_id=#{id}&email=#{buyer.email}", method: :delete, class: "btn no-loading", data: { confirm: "Do you want to delete this buyer? This can't be undone.", title: "Confirm Delete" }) %>    
-         </td>            
+
+           <%= link_to("Delete", "buyers?product_id=#{id}&email=#{buyer.email}", method: :delete, class: "btn no-loading", data: { confirm: "Do you want to delete this buyer? This can't be undone.", title: "Confirm Delete" }) %>
+         </td>
          </tr>
-         <% end %>                 
+         <% end %>
         </tbody>
       </table>
     </div>

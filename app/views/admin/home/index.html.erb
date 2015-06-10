@@ -13,14 +13,6 @@
       <span class="stat-green total-buyers"><%= @shop.total_buyers %> Buyers</span>
       <p class="stat-description total-raises"><%= @shop.total_raises %> outstanding raises</p>
     </div>
-    <div class="section-cell">
-      <h2>Waitlist Activity</h2>
-      <%= column_chart(Buyer.group(:created_at).count, colors: ["#C0D891"], height: "75px", xAxis: {
-            type: 'datetime',
-            dateTimeLabelFormats: {
-                day: '%e of %b'
-            }}) %>
-    </div>
   </div>
 
   <div class="section-row">

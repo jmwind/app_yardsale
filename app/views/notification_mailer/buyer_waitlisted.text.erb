@@ -1,7 +1,7 @@
 Hi <%= @buyer.name.truncate_words(1, omission: '') %>,
 You've been added to the waiting for <%= @product.title %> at <%=@shop.url%>.
 
-<% if @buyer.raise > 0 %>
+<% if @buyer.raise? %>
 
 You've suggested another price of <%= number_to_currency(@buyer.raise) %>. If it's accepted you'll be e-mailed the details. Otherwise,
 we will e-mail you if the item sells or is available again.

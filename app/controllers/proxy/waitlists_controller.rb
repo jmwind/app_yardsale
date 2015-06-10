@@ -32,9 +32,6 @@ class Proxy::WaitlistsController < RemoteAreaController
     end
   end
 
-  def product
-  end
-
   private
 
   def remote_id_param

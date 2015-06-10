@@ -2,15 +2,15 @@
 Hi <%= @buyer.name.truncate_words(1, omission: '') %>,
 You've been added to the waiting for <%= @product.title %> at <a href="https://<%=@shop.url%>"><%=@shop.name%></a>.
 </p>
-<% if @buyer.raise > 0 %>
-<p>
-You've suggested another price of <%= number_to_currency(@buyer.raise) %>. If it's accepted you'll be e-mailed the details. Otherwise,
-we will e-mail you if the item sells or is available again.
-</p>
+<% if @buyer.raise? %>
+  <p>
+  You've suggested another price of <%= number_to_currency(@buyer.raise) %>. If it's accepted you'll be e-mailed the details. Otherwise,
+  we will e-mail you if the item sells or is available again.
+  </p>
 <% else %>
-<p>
-If the current buyer changes her mind, you'll be notified by e-mail and have a chance to reserve again.
-</p>
+  <p>
+  If the current buyer changes her mind, you'll be notified by e-mail and have a chance to reserve again.
+  </p>
 <% end %>
 <p>
 Thanks!

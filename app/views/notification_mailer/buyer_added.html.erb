@@ -2,7 +2,7 @@
 <p>
 <%= @buyer.name %> (<%= @buyer.email %>) has been added to the waiting for <%= @product.title %>.
 </p>
-<% if @buyer.raise > 0 %>
+<% if @buyer.raise? %>
 <p>
 They have raised the price to <%= number_to_currency(@buyer.raise) %>
 </p>
