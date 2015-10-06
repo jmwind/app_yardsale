@@ -6,6 +6,8 @@ Gone are the days of listing an item and getting dozen of text messages from pot
 
 Below is what it typically feels like when selling items on-line on a Craigslist site. You'll spend your week in SMS exchanges with potential buyers. Now multiply that by N items that you're selling and it's a nightmare, to the point that it's not even worth your while.
 
+:point_down:
+
 ![old school](doc/yardsale_iphone_chat.png)
 
 In a more modern setup with Shopify and Yardsale the pesky SMS exchanges are replaced with a workflow around reserved items. The simplest improvement over a marketplace is that reserving something is automated, transparent, and doesn't stop the process with other buyers.
