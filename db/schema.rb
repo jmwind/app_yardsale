@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150507031016) do
 
   create_table "shops", force: :cascade do |t|
     t.string   "url"
-    t.integer  "shop_id"
+    t.integer  "shop_id" // this has to be an unsigned big int for 64-bit ids now 
     t.string   "api_token"
     t.string   "oauth_token"
     t.text     "settings"
